@@ -3,7 +3,6 @@ import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:todo_list_provider/app/core/widget/todo_list_field.dart';
 
 import '../../../core/widget/todo_list_logo.dart';
-import 'login_controller.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -55,14 +54,14 @@ class LoginPage extends StatelessWidget {
                                 ),
                                 ElevatedButton(
                                   onPressed: () {},
-                                  child: Padding(
-                                    padding: EdgeInsets.all(10),
-                                    child: Text('Login'),
-                                  ),
                                   style: ElevatedButton.styleFrom(
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(20),
                                     ),
+                                  ),
+                                  child: const Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: Text('Login'),
                                   ),
                                 ),
                               ],
@@ -105,7 +104,10 @@ class LoginPage extends StatelessWidget {
                               children: [
                                 const Text('Não tem conta?'),
                                 TextButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.of(context)
+                                          .pushNamed('/register');
+                                    },
                                     child: const Text('Cadastre-se'))
                               ],
                             )

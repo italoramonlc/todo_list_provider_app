@@ -1,11 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'core/database/sqlite_adm_connection.dart';
 import 'core/ui/todo_list_ui_config.dart';
 import 'modules/auth/auth_module.dart';
-import 'modules/auth/login/login_controller.dart';
-import 'modules/auth/login/login_page.dart';
 import 'modules/splash/splash_page.dart';
 
 class AppWidget extends StatefulWidget {
@@ -22,6 +20,7 @@ class _AppWidgetState extends State<AppWidget> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    FirebaseAuth auth = FirebaseAuth.instance;
     WidgetsBinding.instance.addObserver(sqliteAdmConnection);
   }
 
@@ -38,7 +37,7 @@ class _AppWidgetState extends State<AppWidget> {
       initialRoute: '/login',
       theme: TodoListUiConfig.theme,
       routes: {...AuthModule().routers},
-      home: SplashPage(),
+      home: const SplashPage(),
     );
   }
 }
